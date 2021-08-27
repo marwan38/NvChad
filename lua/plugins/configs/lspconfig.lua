@@ -59,21 +59,61 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 -- lspInstall + lspconfig stuff
 
+local diagnosticls_filetypes = {
+   typescript = "eslint",
+   typescriptreact = "eslint",
+}
+
+local diagnosticls_linters = {
+   eslint = {
+      sourceName = "eslint",
+      command = "eslint_d",
+      rootPatterns = { ".eslintrc.js", "package.json" },
+      debounce = 100,
+      args = { "--stdin", "--stdin-filename", "%filepath", "--format", "json" },
+      parseJson = {
+         errorsRoot = "[0].messages",
+         line = "line",
+         column = "column",
+         endLine = "endLine",
+         endColumn = "endColumn",
+         message = "${message} [${ruleId}]",
+         security = "severity",
+      },
+      securities = { [2] = "error", [1] = "warning" },
+   },
+}
+
 local function setup_servers()
    lspinstall.setup()
    local servers = lspinstall.installed_servers()
 
    for _, lang in pairs(servers) do
-      if lang ~= "lua" then
+      if lang == "diagnosticls" then
          lspconfig[lang].setup {
             on_attach = on_attach,
             capabilities = capabilities,
             flags = {
                debounce_text_changes = 500,
             },
-            -- root_dir = vim.loop.cwd,
+            filetypes = vim.tbl_keys(diagnosticls_filetypes),
+            init_options = {
+               filetypes = diagnosticls_filetypes,
+               linters = diagnosticls_linters,
+            },
          }
-      elseif lang == "lua" then
+      elseif lang == "typescript" then
+         lspconfig[lang].setup {
+            on_attach = function(client, bufnr)
+               client.resolved_capabilities.document_formatting = false
+               on_attach(client, bufnr)
+            end,
+            capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
+         }
+         elseif lang == "lua" then
          lspconfig[lang].setup {
             on_attach = on_attach,
             capabilities = capabilities,
@@ -98,6 +138,15 @@ local function setup_servers()
                   },
                },
             },
+         }
+      else
+         lspconfig[lang].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
+            -- root_dir = vim.loop.cwd,
          }
       end
    end
