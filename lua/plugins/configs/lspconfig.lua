@@ -113,7 +113,22 @@ local function setup_servers()
                debounce_text_changes = 500,
             },
          }
-         elseif lang == "lua" then
+      elseif lang == "php" then
+         lspconfig[lang].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
+            settings = {
+               intelephense = {
+                  environment = {
+                     phpVersion = "7.4.3",
+                  },
+               },
+            },
+         }
+      elseif lang == "lua" then
          lspconfig[lang].setup {
             on_attach = on_attach,
             capabilities = capabilities,
@@ -177,7 +192,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
    },
    signs = true,
    underline = true,
-   update_in_insert = false, -- update diagnostics insert mode
+   update_in_insert = true, -- update diagnostics insert mode
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
    border = "single",
