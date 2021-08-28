@@ -1,5 +1,6 @@
 local present, telescope = pcall(require, "telescope")
-if not present then
+local present2, actions = pcall(require, "telescope.actions")
+if not (present or present2) then
    return
 end
 
@@ -49,6 +50,34 @@ telescope.setup {
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+      mappings = {
+         i = {
+            ["<C-n>"] = actions.move_selection_next,
+            ["<C-p>"] = actions.move_selection_previous,
+            ["<C-c>"] = actions.close,
+            ["<C-j>"] = actions.cycle_history_next,
+            ["<C-k>"] = actions.cycle_history_prev,
+            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            ["<CR>"] = actions.select_default + actions.center,
+         },
+         n = {
+            ["<C-n>"] = actions.move_selection_next,
+            ["<C-p>"] = actions.move_selection_previous,
+            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+         },
+      },
+   },
+   pickers = {
+      buffers = {
+         mappings = {
+            i = {
+               ["<c-d>"] = require("telescope.actions").delete_buffer,
+            },
+            n = {
+               ["<c-d>"] = require("telescope.actions").delete_buffer,
+            },
+         },
+      },
    },
    extensions = {
       fzf = {

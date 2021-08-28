@@ -185,8 +185,6 @@ M.mappings.plugin = {
       live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
       themes = "<leader>th",
-      cycle_history_next = "<C-j>",
-      cycle_history_prev = "<C-k>",
    },
    telescope_media = {
       media_files = "<leader>fp",

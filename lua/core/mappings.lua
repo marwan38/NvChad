@@ -179,8 +179,6 @@ M.telescope = function()
    map("n", m.live_grep, ":Telescope live_grep <CR>")
    map("n", m.oldfiles, ":Telescope oldfiles <CR>")
    map("n", m.themes, ":Telescope themes <CR>")
-   map("n", m.cycle_history_next, ":lua require('telescope.actions').cycle_history_next() <CR>")
-   map("n", m.cycle_history_prev, ":lua require('telescope.actions').cycle_history_prev() <CR>")
 end
 
 M.telescope_media = function()

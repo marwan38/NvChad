@@ -46,7 +46,7 @@ M.options = {
    expandtab = true,
    hidden = true,
    ignorecase = true,
-   insert_nav = true, -- navigation in insertmode
+   insert_nav = false, -- navigation in insertmode
    mapleader = " ",
    mouse = "a",
    number = true,
@@ -179,8 +179,6 @@ M.mappings.plugin = {
       live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
       themes = "<leader>th",
-      cycle_history_next = "<C-j>",
-      cycle_history_prev = "<C-k>",
    },
    telescope_media = {
       media_files = "<leader>fp",
