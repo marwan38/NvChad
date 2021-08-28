@@ -55,6 +55,7 @@ M.options = {
    permanent_undo = true,
    shiftwidth = 2,
    smartindent = true,
+   autoindent = true,
    tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
    timeoutlen = 400,
    relativenumber = true,
