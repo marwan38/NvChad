@@ -1,6 +1,14 @@
 local M = {}
 
 M.dap = {
+   config = {
+      breakpoint = {
+         text = "",
+         texthl = "LspDiagnosticsSignError",
+         linehl = "",
+         numhl = "",
+      },
+   },
    setup = function()
       local present, dap = pcall(require, "dap")
 
@@ -8,12 +16,7 @@ M.dap = {
          return
       end
 
-      vim.fn.sign_define("DapBreakpoint", {
-         text = "",
-         texthl = "LspDiagnosticsSignError",
-         linehl = "",
-         numhl = "",
-      })
+      vim.fn.sign_define("DapBreakpoint", M.dap.config)
       dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
    end,
 }
@@ -26,10 +29,10 @@ M.dap_install = {
          return
       end
 
-      dap_install.setup({
+      dap_install.setup {
          installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
          verbosely_call_debuggers = false,
-      })
+      }
    end,
    config = function()
       local present, dap_install = pcall(require, "dap-install")

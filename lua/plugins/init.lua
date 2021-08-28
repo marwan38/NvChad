@@ -360,21 +360,17 @@ return packer.startup(function()
    -- }
 
    use {
+      "mfussenegger/nvim-dap",
+      config = function()
+         require("plugins.configs.dap").dap.setup()
+         require("core.mappings").dap()
+      end,
+   }
+
+   use {
       "Pocco81/DAPInstall.nvim",
       config = function()
          require("plugins.configs.dap").dap_install.config()
       end,
-      setup = function()
-         require("plugins.configs.dap").dap_install.setup()
-      end,
-      requires = {
-         {
-            "mfussenegger/nvim-dap",
-            setup = function()
-               require("plugins.configs.dap").dap.setup()
-               require("core.mappings").dap()
-            end,
-         },
-      },
    }
 end)
