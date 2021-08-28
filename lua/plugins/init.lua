@@ -350,4 +350,31 @@ return packer.startup(function()
          require("core.mappings").vim_fugitive()
       end,
    }
+
+   -- use {
+   --    "rcarriga/nvim-dap-ui",
+   --    after = "nvim-dap",
+   --    setup = function()
+   --       require "plugins.configs.dap-ui"
+   --    end,
+   -- }
+
+   use {
+      "Pocco81/DAPInstall.nvim",
+      config = function()
+         require("plugins.configs.dap").dap_install.config()
+      end,
+      setup = function()
+         require("plugins.configs.dap").dap_install.setup()
+      end,
+      requires = {
+         {
+            "mfussenegger/nvim-dap",
+            setup = function()
+               require("plugins.configs.dap").dap.setup()
+               require("core.mappings").dap()
+            end,
+         },
+      },
+   }
 end)

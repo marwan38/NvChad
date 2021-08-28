@@ -179,6 +179,8 @@ M.telescope = function()
    map("n", m.live_grep, ":Telescope live_grep <CR>")
    map("n", m.oldfiles, ":Telescope oldfiles <CR>")
    map("n", m.themes, ":Telescope themes <CR>")
+   map("n", m.cycle_history_next, ":lua require('telescope.actions').cycle_history_next() <CR>")
+   map("n", m.cycle_history_prev, ":lua require('telescope.actions').cycle_history_prev() <CR>")
 end
 
 M.telescope_media = function()
@@ -202,6 +204,24 @@ M.vim_fugitive = function()
    map("n", m.git_blame, ":Git blame <CR>")
    map("n", m.diff_get_2, ":diffget //2 <CR>")
    map("n", m.diff_get_3, ":diffget //3 <CR>")
+end
+
+M.dap = function()
+   local m = plugin_maps.dap
+
+   map("n", m.toggle_breakpoint, ":lua require'dap'.toggle_breakpoint() <CR>")
+   map("n", m.step_back, ":lua require'dap'.step_back() <CR>")
+   map("n", m.continue, ":lua require'dap'.continue() <CR>")
+   map("n", m.run_to_cursor, ":lua require'dap'.run_to_cursor() <CR>")
+   map("n", m.disconnect, ":lua require'dap'.disconnect() <CR>")
+   map("n", m.get_session, ":lua require'dap'.get_session() <CR>")
+   map("n", m.step_into, ":lua require'dap'.step_into() <CR>")
+   map("n", m.step_over, ":lua require'dap'.step_over() <CR>")
+   map("n", m.step_out, ":lua require'dap'.step_out() <CR>")
+   map("n", m.pause, ":lua require'dap'.pause.toggle() <CR>")
+   map("n", m.toggle_repl, ":lua require'dap'.repl.toggle() <CR>")
+   map("n", m.start_dap, ":lua require'dap'.continue() <CR>")
+   map("n", m.quit_dap, ":lua require'dap'.close() <CR>")
 end
 
 return M
