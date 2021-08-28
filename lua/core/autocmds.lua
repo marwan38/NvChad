@@ -11,6 +11,14 @@ vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype
 -- Don't show status line on certain windows
 vim.cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua require("core.utils").hide_statusline() ]]
 
+-- ftplugin
+vim.cmd [[ 
+  augroup _general_settings
+  autocmd!
+  autocmd Filetype * lua require('core.utils').do_filetype(vim.fn.expand("<amatch>")) 
+  augroup END
+ ]]
+
 -- Open a file from its last left off position
 -- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
 -- File extension specific tabbing
