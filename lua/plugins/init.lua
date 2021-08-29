@@ -4,9 +4,9 @@ if not present then
    return false
 end
 
-local use = packer.use
+-- local use = packer.use
 
-return packer.startup(function()
+return packer.startup(function(use)
    local plugin_status = require("core.utils").load_config().plugin_status
 
    -- this is arranged on the basis of when a plugin starts
@@ -362,7 +362,7 @@ return packer.startup(function()
    use {
       "mfussenegger/nvim-dap",
       config = function()
-         require("plugins.configs.dap").dap.setup()
+         require("plugins.configs.dap").dap.config()
          require("core.mappings").dap()
       end,
    }
@@ -371,6 +371,17 @@ return packer.startup(function()
       "Pocco81/DAPInstall.nvim",
       config = function()
          require("plugins.configs.dap").dap_install.config()
+      end,
+   }
+
+   use {
+      "tpope/vim-surround",
+   }
+
+   use {
+      "vim-test/vim-test",
+      setup = function()
+         require("plugins.configs.vim-test").setup()
       end,
    }
 end)
