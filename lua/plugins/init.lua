@@ -351,14 +351,6 @@ return packer.startup(function(use)
       end,
    }
 
-   -- use {
-   --    "rcarriga/nvim-dap-ui",
-   --    after = "nvim-dap",
-   --    setup = function()
-   --       require "plugins.configs.dap-ui"
-   --    end,
-   -- }
-
    use {
       "mfussenegger/nvim-dap",
       config = function()
@@ -375,7 +367,11 @@ return packer.startup(function(use)
    }
 
    use {
-      "tpope/vim-surround",
+      "rcarriga/nvim-dap-ui",
+      after = "nvim-dap",
+      config = function()
+         require "plugins.configs.dap-ui"
+      end,
    }
 
    use {
@@ -383,5 +379,13 @@ return packer.startup(function(use)
       setup = function()
          require("plugins.configs.vim-test").setup()
       end,
+   }
+
+   use {
+      "David-Kunz/jester",
+   }
+
+   use {
+      "tpope/vim-surround",
    }
 end)
