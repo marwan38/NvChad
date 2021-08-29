@@ -75,7 +75,7 @@ M.options.plugin = {
 
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
-   autosave = true, -- to autosave files
+   autosave = false, -- to autosave files
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
    cheatsheet = true, -- fuzzy search your commands/keymappings
@@ -89,9 +89,9 @@ M.plugin_status = {
    lspsignature = true, -- lsp enhancements
    neoformat = true, -- universal formatter
    neoscroll = true, -- smooth scroll
-   telescope_media = true, -- see media files in telescope picker
-   truezen = true, -- no distraction mode for nvim
-   vim_fugitive = true, -- git in nvim
+   telescope_media = false, -- see media files in telescope picker
+   truezen = false, -- no distraction mode for nvim
+   vim_fugitive = false, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
 }
 
@@ -144,6 +144,11 @@ M.mappings.plugin = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
+      --better window movement
+      moveLeft = "<C-h>",
+      moveRight = "<C-l>",
+      moveUp = "<C-k>",
+      moveDown = "<C-j>",
    },
    chadsheet = {
       default_keys = "<leader>dk",
