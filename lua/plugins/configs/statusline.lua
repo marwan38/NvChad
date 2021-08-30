@@ -97,7 +97,7 @@ components.left.active[3] = {
 components.left.active[4] = {
    provider = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-      return "  " .. dir_name .. " "
+      return " " .. dir_name .. " "
    end,
 
    hl = {
@@ -375,7 +375,7 @@ components.right.active[10] = {
          return " Bot "
       end
       local result, _ = math.modf((current_line / total_line) * 100)
-      return " " .. result .. "%% "
+      return " " .. result .. " %% "
    end,
 
    hl = {

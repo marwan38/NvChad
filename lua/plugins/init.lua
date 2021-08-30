@@ -192,7 +192,7 @@ return packer.startup(function(use)
       wants = "friendly-snippets",
       after = "nvim-cmp",
       config = function()
-         require("plugins.configs.others").luasnip()
+         require "plugins.configs.luasnip"
       end,
    }
 
@@ -354,41 +354,5 @@ return packer.startup(function(use)
       end,
    }
 
-   use {
-      "mfussenegger/nvim-dap",
-      config = function()
-         require("plugins.configs.dap").dap.config()
-         require("core.mappings").dap()
-      end,
-   }
-
-   use {
-      "Pocco81/DAPInstall.nvim",
-      config = function()
-         require("plugins.configs.dap").dap_install.config()
-      end,
-   }
-
-   use {
-      "rcarriga/nvim-dap-ui",
-      after = "nvim-dap",
-      config = function()
-         require "plugins.configs.dap-ui"
-      end,
-   }
-
-   use {
-      "vim-test/vim-test",
-      setup = function()
-         require("plugins.configs.vim-test").setup()
-      end,
-   }
-
-   use {
-      "David-Kunz/jester",
-   }
-
-   use {
-      "tpope/vim-surround",
-   }
+   require("core.hooks").run("install_plugins", use)
 end)
