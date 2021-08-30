@@ -254,6 +254,9 @@ return packer.startup(function(use)
       cmd = "Neoformat",
       setup = function()
          require("core.mappings").neoformat()
+         vim.g["neoformat_run_all_formatters"] = 0
+         vim.g["neoformat_enabled_typescript"] = { "eslint_d" }
+         vim.g["neoformat_enabled_typescriptreact"] = vim.g["neoformat_enabled_typescript"]
       end,
    }
 

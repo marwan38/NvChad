@@ -8,7 +8,7 @@ M.ui = {
    italic_comments = false,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
-   theme = "gruvchad",
+   theme = "nord",
 
    -- theme toggler, toggle between two themes, see theme_toggleer mappings
    theme_toggler = {
@@ -75,7 +75,7 @@ M.options.plugin = {
 
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
-   autosave = false, -- to autosave files
+   autosave = true, -- to autosave files
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
    cheatsheet = true, -- fuzzy search your commands/keymappings
@@ -91,7 +91,7 @@ M.plugin_status = {
    neoscroll = true, -- smooth scroll
    telescope_media = false, -- see media files in telescope picker
    truezen = false, -- no distraction mode for nvim
-   vim_fugitive = false, -- git in nvim
+   vim_fugitive = true, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
 }
 
