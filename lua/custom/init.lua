@@ -1,10 +1,15 @@
 local hooks = require "core.hooks"
 
 hooks.add("setup_mappings", function(map)
-   local opt = {}
+   local opt = { silent = true }
 
-   map("v", "<", [[<gv]])
-   map("v", ">", [[>gv]])
+   map("v", "<", [[<gv]], opt)
+   map("v", ">", [[>gv]], opt)
+
+   map("n", "<A-j>", ":resize -10<CR>", opt)
+   map("n", "<A-k>", ":resize +10<CR>", opt)
+   map("n", "<A-l>", ":vertical resize -10<CR>", opt)
+   map("n", "<A-h>", ":vertical resize +10<CR>", opt)
 end)
 
 hooks.add("install_plugins", function(use)
@@ -44,7 +49,7 @@ hooks.add("install_plugins", function(use)
    --    }
 
    -- text objects
-   use "wellle/targets.vim" -- many useful additional text objects
+   -- use "wellle/targets.vim" -- many useful additional text objects
 
    -- registers
    -- use_with_config("svermeulen/vim-subversive", "subversive") -- adds substitute operator
@@ -53,7 +58,7 @@ hooks.add("install_plugins", function(use)
    use("tversteeg/registers.nvim", "registers") -- shows register contents intelligently
 
    -- lsp
-   use_with_config("RRethy/vim-illuminate", "illuminate") -- highlights and allows moving between variable references
+   -- use_with_config("RRethy/vim-illuminate", "illuminate") -- highlights and allows moving between variable references
 
    -- treesitter
    use {
@@ -86,13 +91,13 @@ hooks.add("install_plugins", function(use)
    --       end,
    --    }
    --
-   use {
-      "rcarriga/nvim-dap-ui",
-      after = "nvim-dap",
-      config = function()
-         require "plugins.configs.dap-ui"
-      end,
-   }
+   -- use {
+   --    "rcarriga/nvim-dap-ui",
+   --    after = "nvim-dap",
+   --    config = function()
+   --       require "plugins.configs.dap-ui"
+   --    end,
+   -- }
 
    use {
       "vim-test/vim-test",
