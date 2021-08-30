@@ -15,39 +15,40 @@ hooks.add("install_plugins", function(use)
    local use_with_config = function(path, name)
       use { path, config = config(name) }
    end
-
+   -- basic
    use {
       "tpope/vim-surround",
    }
+   use_with_config("windwp/nvim-spectre", "spectre")
 
-   use {
-      "aserowy/tmux.nvim",
-      config = function()
-         local present, tmux = pcall(require, "tmux")
-         if not present then
-            return
-         end
-
-         tmux.setup {
-            copy_sync = {
-               enable = false, -- since clipboard is set to unnamed already
-            },
-            navigation = {
-               enable_default_keybindings = true, -- enables c-hjkl for navigation
-            },
-            resize = {
-               enable_default_keybindings = true, -- enables alt/option-hjkl for resizing
-            },
-         }
-      end,
-   }
+   --    use {
+   --       "aserowy/tmux.nvim",
+   --       config = function()
+   --          local present, tmux = pcall(require, "tmux")
+   --          if not present then
+   --             return
+   --          end
+   --
+   --          tmux.setup {
+   --             copy_sync = {
+   --                enable = false, -- since clipboard is set to unnamed already
+   --             },
+   --             navigation = {
+   --                enable_default_keybindings = true, -- enables c-hjkl for navigation
+   --             },
+   --             resize = {
+   --                enable_default_keybindings = true, -- enables alt/option-hjkl for resizing
+   --             },
+   --          }
+   --       end,
+   --    }
 
    -- text objects
    use "wellle/targets.vim" -- many useful additional text objects
 
    -- registers
    -- use_with_config("svermeulen/vim-subversive", "subversive") -- adds substitute operator
-   -- use_with_config("svermeulen/vim-cutlass", "cutlass") -- separates cut and delete operations
+   use_with_config("svermeulen/vim-cutlass", "cutlass") -- separates cut and delete operations
    -- use_with_config("svermeulen/vim-yoink", "yoink") -- improves paste
    use("tversteeg/registers.nvim", "registers") -- shows register contents intelligently
 
@@ -61,6 +62,14 @@ hooks.add("install_plugins", function(use)
    }
    use { "JoosepAlviste/nvim-ts-context-commentstring", ft = { "typescript", "typescriptreact" } }
 
+   -- development
+   use {
+      "vuki656/package-info.nvim",
+      config = function()
+         require("package-info").setup()
+      end,
+   } -- show versions in package.json
+
    -- dap
    use {
       "mfussenegger/nvim-dap",
@@ -70,13 +79,13 @@ hooks.add("install_plugins", function(use)
       end,
    }
 
-   use {
-      "Pocco81/DAPInstall.nvim",
-      config = function()
-         require("plugins.configs.dap").dap_install.config()
-      end,
-   }
-
+   --    use {
+   --       "Pocco81/DAPInstall.nvim",
+   --       config = function()
+   --          require("plugins.configs.dap").dap_install.config()
+   --       end,
+   --    }
+   --
    use {
       "rcarriga/nvim-dap-ui",
       after = "nvim-dap",

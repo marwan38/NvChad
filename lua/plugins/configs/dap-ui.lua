@@ -1,6 +1,6 @@
 local present1, dap_ui = pcall(require, "dapui")
 
-if not (present1) then
+if not present1 then
    return
 end
 
