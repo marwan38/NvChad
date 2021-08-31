@@ -3,10 +3,11 @@ local opt = vim.opt
 local cmd = vim.cmd
 local hooks = require "core.hooks"
 
-vim.opt.foldmethod = expr
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- TreeSitter folding
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()" -- TreeSitter folding
 -- vim.opt.foldlevel = 6
-vim.opt.mouse = "a" -- enable mouse mode
+opt.mouse = "a" -- enable mouse mode
+opt.termguicolors = true -- True color support
 
 -- go to last loc when opening a buffer
 cmd [[
