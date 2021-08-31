@@ -76,13 +76,7 @@ hooks.add("install_plugins", function(use)
    } -- show versions in package.json
 
    -- dap
-   use {
-      "mfussenegger/nvim-dap",
-      config = function()
-         require("plugins.configs.dap").dap.config()
-         require("core.mappings").dap()
-      end,
-   }
+   use_with_config("mfussenegger/nvim-dap", "dap")
 
    --    use {
    --       "Pocco81/DAPInstall.nvim",
@@ -99,14 +93,14 @@ hooks.add("install_plugins", function(use)
    --    end,
    -- }
 
-   use {
-      "vim-test/vim-test",
-      setup = function()
-         require("plugins.configs.vim-test").setup()
-      end,
-   }
+   -- use {
+   --    "vim-test/vim-test",
+   --    setup = function()
+   --       require("plugins.configs.vim-test").setup()
+   --    end,
+   -- }
 
-   use {
-      "David-Kunz/jester",
-   }
+   -- use {
+   --    "David-Kunz/jester",
+   -- }
 end)

@@ -199,21 +199,6 @@ M.mappings.plugin = {
       git = "<leader>gs",
       git_blame = "<leader>gb",
    },
-   dap = {
-      toggle_breakpoint = "<leader>dt",
-      step_back = "<leader>db",
-      continue = "<leader>dc",
-      run_to_cursor = "<leader>dC",
-      disconnect = "<leader>d",
-      get_session = "<leader>dg",
-      step_into = "<leader>di",
-      step_over = "<leader>do",
-      step_out = "<leader>du",
-      pause = "<leader>dp",
-      toggle_repl = "<leader>dr",
-      start_dap = "<leader>ds",
-      quit_dap = "<leader>dq",
-   },
 }
 
 -- user custom mappings
