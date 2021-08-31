@@ -55,7 +55,10 @@ hooks.add("install_plugins", function(use)
    -- use_with_config("svermeulen/vim-subversive", "subversive") -- adds substitute operator
    use_with_config("svermeulen/vim-cutlass", "cutlass") -- separates cut and delete operations
    -- use_with_config("svermeulen/vim-yoink", "yoink") -- improves paste
-   use("tversteeg/registers.nvim", "registers") -- shows register contents intelligently
+   -- shows register contents intelligently
+   -- use {
+   --    "tversteeg/registers.nvim",
+   -- }
 
    -- lsp
    -- use_with_config("RRethy/vim-illuminate", "illuminate") -- highlights and allows moving between variable references
@@ -68,31 +71,18 @@ hooks.add("install_plugins", function(use)
    use { "JoosepAlviste/nvim-ts-context-commentstring", ft = { "typescript", "typescriptreact" } }
 
    -- development
-   use {
-      "vuki656/package-info.nvim",
-      config = function()
-         require("package-info").setup()
-      end,
-   } -- show versions in package.json
+   use_with_config("vuki656/package-info.nvim", "package-info") -- show versions in package.json
 
    -- dap
    use_with_config("mfussenegger/nvim-dap", "dap")
+   use {
+      "rcarriga/nvim-dap-ui",
+      config = function()
+         require "plugins.configs.dap-ui"
+      end,
+   }
 
-   --    use {
-   --       "Pocco81/DAPInstall.nvim",
-   --       config = function()
-   --          require("plugins.configs.dap").dap_install.config()
-   --       end,
-   --    }
-   --
-   -- use {
-   --    "rcarriga/nvim-dap-ui",
-   --    after = "nvim-dap",
-   --    config = function()
-   --       require "plugins.configs.dap-ui"
-   --    end,
-   -- }
-
+   -- testing
    -- use {
    --    "vim-test/vim-test",
    --    setup = function()

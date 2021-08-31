@@ -1,10 +1,6 @@
-local present1, dap_ui = pcall(require, "dapui")
+local map = require("core.utils").map
 
-if not present1 then
-   return
-end
-
-dap_ui.setup {
+require("dapui").setup {
    icons = { expanded = "▾", collapsed = "▸" },
    mappings = {
       -- Use a table to apply multiple mappings
@@ -45,3 +41,5 @@ dap_ui.setup {
    },
    windows = { indent = 1 },
 }
+
+map("n", "<leader>dv", ":lua require('dapui').toggle()<CR>")
