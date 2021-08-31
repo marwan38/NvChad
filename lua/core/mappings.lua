@@ -119,7 +119,7 @@ M.misc = function()
    hooks.run("setup_mappings", map)
 end
 
--- below are all plugin related mappinsg
+-- below are all plugin related mappings
 
 M.better_escape = function()
    vim.g.better_escape_shortcut = plugin_maps.better_escape.esc_insertmode or { "" }
