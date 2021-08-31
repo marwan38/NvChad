@@ -1,4 +1,26 @@
+local g = vim.g
+local opt = vim.opt
+local cmd = vim.cmd
 local hooks = require "core.hooks"
+
+vim.opt.foldmethod = expr
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- TreeSitter folding
+-- vim.opt.foldlevel = 6
+vim.opt.mouse = "a" -- enable mouse mode
+
+-- go to last loc when opening a buffer
+cmd [[
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+]]
+
+-- Highlight on yank
+cmd "au TextYankPost * lua vim.highlight.on_yank {}"
+
+-- show cursor line only in active window
+cmd [[
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertEnter,WinLeave * set nocursorline
+]]
 
 hooks.add("setup_mappings", function(map)
    local opt = { silent = true }
@@ -24,8 +46,16 @@ hooks.add("install_plugins", function(use)
    use {
       "tpope/vim-surround",
    }
-   use_with_config("windwp/nvim-spectre", "spectre")
-
+   use {
+      "windwp/nvim-spectre",
+      opt = true,
+      module = "spectre",
+      wants = { "plenary.nvim", "popup.nvim" },
+      requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
+      config = function()
+         require "plugins.configs.spectre"
+      end,
+   }
    --    use {
    --       "aserowy/tmux.nvim",
    --       config = function()
@@ -75,12 +105,7 @@ hooks.add("install_plugins", function(use)
 
    -- dap
    use_with_config("mfussenegger/nvim-dap", "dap")
-   use {
-      "rcarriga/nvim-dap-ui",
-      config = function()
-         require "plugins.configs.dap-ui"
-      end,
-   }
+   use_with_config("rcarriga/nvim-dap-ui", "dap-ui")
 
    -- testing
    -- use {

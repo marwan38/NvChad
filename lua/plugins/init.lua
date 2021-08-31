@@ -66,7 +66,7 @@ return packer.startup(function(use)
       "lukas-reineke/indent-blankline.nvim",
       disable = not plugin_status.blankline,
       event = "BufRead",
-      config = function()
+      setup = function()
          require("plugins.configs.others").blankline()
       end,
    }
