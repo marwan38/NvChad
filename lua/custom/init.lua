@@ -3,8 +3,8 @@ local opt = vim.opt
 local cmd = vim.cmd
 local hooks = require "core.hooks"
 
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()" -- TreeSitter folding
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()" -- TreeSitter folding
 -- vim.opt.foldlevel = 6
 opt.mouse = "a" -- enable mouse mode
 opt.termguicolors = true -- True color support
@@ -80,11 +80,11 @@ hooks.add("install_plugins", function(use)
    --    }
 
    -- text objects
-   -- use "wellle/targets.vim" -- many useful additional text objects
+   use "wellle/targets.vim" -- many useful additional text objects
 
    -- registers
    -- use_with_config("svermeulen/vim-subversive", "subversive") -- adds substitute operator
-   use_with_config("svermeulen/vim-cutlass", "cutlass") -- separates cut and delete operations
+   -- use_with_config("svermeulen/vim-cutlass", "cutlass") -- separates cut and delete operations
    -- use_with_config("svermeulen/vim-yoink", "yoink") -- improves paste
    -- shows register contents intelligently
    -- use {
