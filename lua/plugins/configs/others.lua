@@ -77,6 +77,23 @@ M.blankline = function()
    }
    -- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
    vim.wo.colorcolumn = "99999"
+   vim.g.indent_blankline_show_trailing_blankline_indent = false
+   vim.g.indent_blankline_show_first_indent_level = false
+
+   require("indent_blankline").setup {
+      indentLine_enabled = 1,
+      char = "▏",
+      indent_blankline_filetype_exclude = {
+         "help",
+         "terminal",
+         "dashboard",
+         "packer",
+         "lspinfo",
+         "TelescopePrompt",
+         "TelescopeResults",
+      },
+      indent_blankline_buftype_exclude = { "terminal" },
+   }
 end
 
 M.colorizer = function()
