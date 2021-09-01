@@ -106,7 +106,11 @@ hooks.add("install_plugins", function(use)
 
    -- dap
    use_with_config("mfussenegger/nvim-dap", "dap")
-   use_with_config("rcarriga/nvim-dap-ui", "dap-ui")
+   use {
+      "rcarriga/nvim-dap-ui",
+      config = config "dap-ui",
+      ft = { "php", "ts", "tsx" },
+   }
 
    -- testing
    -- use {
