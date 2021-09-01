@@ -43,42 +43,10 @@ M.better_escape = function()
 end
 
 M.blankline = function()
-   vim.g.indent_blankline_show_trailing_blankline_indent = false
-   vim.g.indent_blankline_use_treesitter = true
-   vim.g.indent_blankline_show_current_context = true
-   vim.g.indent_blankline_context_patterns = {
-      "class",
-      "return",
-      "function",
-      "method",
-      "^if",
-      "^do",
-      "^switch",
-      "^while",
-      "jsx_element",
-      "^for",
-      "^object",
-      "^table",
-      "block",
-      "arguments",
-      "if_statement",
-      "else_clause",
-      "jsx_element",
-      "jsx_self_closing_element",
-      "try_statement",
-      "catch_clause",
-      "import_statement",
-      "operation_type",
-   }
-   -- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
-   vim.wo.colorcolumn = "99999"
-   vim.g.indent_blankline_show_trailing_blankline_indent = false
-   vim.g.indent_blankline_show_first_indent_level = false
-
    require("indent_blankline").setup {
       indentLine_enabled = 1,
       char = "▏",
-      indent_blankline_filetype_exclude = {
+      filetype_exclude = {
          "help",
          "terminal",
          "dashboard",
@@ -87,7 +55,35 @@ M.blankline = function()
          "TelescopePrompt",
          "TelescopeResults",
       },
-      indent_blankline_buftype_exclude = { "terminal" },
+      buftype_exclude = { "terminal" },
+      show_first_indent_level = false,
+      show_trailing_blankline_indent = false,
+      use_treesitter = true,
+      show_current_context = true,
+      context_patterns = {
+         "class",
+         "return",
+         "function",
+         "method",
+         "^if",
+         "^do",
+         "^switch",
+         "^while",
+         "jsx_element",
+         "^for",
+         "^object",
+         "^table",
+         "block",
+         "arguments",
+         "if_statement",
+         "else_clause",
+         "jsx_element",
+         "jsx_self_closing_element",
+         "try_statement",
+         "catch_clause",
+         "import_statement",
+         "operation_type",
+      },
    }
 end
 
