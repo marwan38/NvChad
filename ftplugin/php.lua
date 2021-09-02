@@ -15,9 +15,9 @@ dap.configurations.php = {
       type = "php",
       request = "launch",
       port = 9003,
-      -- pathMappings = {
-      --    ["/home/ec2-user/www/team/marwan/"] = "${workspaceFolder}/",
-      -- },
+      pathMappings = {
+         ["/home/ec2-user/www/team/marwan/"] = "${workspaceFolder}/",
+      },
       -- stopOnEntry = true,
       ignore = {
          "**/silverstripe-cache/**/*.php",

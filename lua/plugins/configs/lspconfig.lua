@@ -62,6 +62,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 local diagnosticls_filetypes = {
    typescript = "eslint",
    typescriptreact = "eslint",
+   php = "phpcs",
 }
 
 local diagnosticls_linters = {
@@ -81,6 +82,21 @@ local diagnosticls_linters = {
          security = "severity",
       },
       securities = { [2] = "error", [1] = "warning" },
+   },
+   phpcs = {
+      sourceName = "phpcs",
+      command = "./vendor/bin/phpcs",
+      debounce = 100,
+      args = { "--standard=PSR2", "--report=emacs", "-s", "-" },
+      offsetLine = 0,
+      offsetColumn = 0,
+      formatLines = 1,
+      formatPattern = {
+         [[^.*:(\d+):(\d+):\s+(.*)\s+-\s+(.*)(\r|\n)*$]],
+         { line = 1, column = 2, security = 3, message = { "[phpcs] ", 4 } },
+      },
+      securities = { error = "error", warning = "warning" },
+      rootPatterns = { ".git", "vendor", "composer.json" },
    },
 }
 
