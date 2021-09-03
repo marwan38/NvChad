@@ -87,7 +87,7 @@ local diagnosticls_linters = {
       sourceName = "phpcs",
       command = "./vendor/bin/phpcs",
       debounce = 100,
-      args = { "--standard=PSR2", "--report=emacs", "-s", "-" },
+      args = {  "--report=emacs", "-s", "-" },
       offsetLine = 0,
       offsetColumn = 0,
       formatLines = 1,
@@ -202,10 +202,7 @@ lspSymbol("Hint", "")
 lspSymbol("Warning", "")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-   virtual_text = {
-      prefix = "",
-      spacing = 0,
-   },
+   -- virtual_text = {},
    signs = true,
    underline = true,
    update_in_insert = false, -- update diagnostics insert mode

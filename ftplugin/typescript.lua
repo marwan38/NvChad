@@ -1,3 +1,7 @@
+local opt = vim.opt
+
+opt.shiftwidth = 4;
+
 local dap = require "dap"
 -- 
 local dap_install_installation_path = vim.fn.stdpath "data" .. "/dapinstall/"

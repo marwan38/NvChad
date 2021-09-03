@@ -8,6 +8,9 @@ local hooks = require "core.hooks"
 -- vim.opt.foldlevel = 6
 opt.mouse = "a" -- enable mouse mode
 opt.termguicolors = true -- True color support
+opt.autoindent = true
+opt.smartindent = true
+opt.lazyredraw = true
 
 -- go to last loc when opening a buffer
 cmd [[
@@ -29,10 +32,10 @@ hooks.add("setup_mappings", function(map)
    map("v", "<", [[<gv]], opt)
    map("v", ">", [[>gv]], opt)
 
-   map("n", "<A-j>", ":resize -10<CR>", opt)
-   map("n", "<A-k>", ":resize +10<CR>", opt)
-   map("n", "<A-l>", ":vertical resize -10<CR>", opt)
-   map("n", "<A-h>", ":vertical resize +10<CR>", opt)
+   map("n", "<A-j>", ":resize -7<CR>", opt)
+   map("n", "<A-k>", ":resize +7<CR>", opt)
+   map("n", "<A-l>", ":vertical resize -7<CR>", opt)
+   map("n", "<A-h>", ":vertical resize +7<CR>", opt)
 end)
 
 hooks.add("install_plugins", function(use)

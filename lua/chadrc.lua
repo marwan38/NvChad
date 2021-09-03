@@ -8,7 +8,7 @@ M.ui = {
    italic_comments = false,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
-   theme = "tokyonight",
+   theme = "gruvchad",
 
    -- theme toggler, toggle between two themes, see theme_toggleer mappings
    theme_toggler = {
@@ -79,7 +79,7 @@ M.plugin_status = {
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
    cheatsheet = true, -- fuzzy search your commands/keymappings
-   colorizer = true,
+   colorizer = false,
    comment = true, -- universal commentor
    dashboard = true, -- a nice looking dashboard
    esc_insertmode = true, -- escape from insert mode using custom keys
@@ -91,7 +91,7 @@ M.plugin_status = {
    telescope_media = false, -- see media files in telescope picker
    truezen = true, -- no distraction mode for nvim
    vim_fugitive = true, -- git in nvim
-   vim_matchup = true, -- % magic, match it but improved
+   vim_matchup = false, -- % magic, match it but improved
 }
 
 -- mappings -- don't use a single keymap twice --
