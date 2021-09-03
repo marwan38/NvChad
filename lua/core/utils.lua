@@ -341,6 +341,7 @@ end
 
 M.do_filetype = function(filetype)
   local ftplugins = M.find_lua_ftplugins(filetype)
+
   local f_env = setmetatable({
     -- Override print, so the prints still go through, otherwise it's confusing for people
     print = vim.schedule_wrap(print),

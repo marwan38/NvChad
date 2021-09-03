@@ -11,6 +11,8 @@ opt.termguicolors = true -- True color support
 opt.autoindent = true
 opt.smartindent = true
 opt.lazyredraw = true
+opt.equalalways = false
+opt.scrolloff = 10
 
 -- go to last loc when opening a buffer
 cmd [[
@@ -25,6 +27,11 @@ cmd [[
   autocmd InsertLeave,WinEnter * set cursorline
   autocmd InsertEnter,WinLeave * set nocursorline
 ]]
+
+hooks.override("lsp", "publish_diagnostics", function(current)
+   current.virtual_text = false
+   return current
+end)
 
 hooks.add("setup_mappings", function(map)
    local opt = { silent = true }
@@ -126,12 +133,6 @@ hooks.add("install_plugins", function(use)
    -- use {
    --    "David-Kunz/jester",
    -- }
--- This is where you custom modules and plugins goes.
--- See the wiki for a guide on how to extend NvChad
-
-local hooks = require "core.hooks"
-
-hooks.override("lsp", "publish_diagnostics", function(current)
-   current.virtual_text = false
-   return current
+   -- This is where you custom modules and plugins goes.
+   -- See the wiki for a guide on how to extend NvChad
 end)
