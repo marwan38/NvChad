@@ -17,7 +17,7 @@ opt.smartindent = options.smartindent
 opt.autoindent = options.autoindent
 
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = { eob = " " }
+opt.fillchars = { eob = " ", stlnc = "_" }
 
 opt.hidden = options.hidden
 opt.ignorecase = options.ignorecase

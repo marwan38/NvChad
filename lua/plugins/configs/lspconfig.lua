@@ -88,7 +88,7 @@ local diagnosticls_linters = {
       sourceName = "phpcs",
       command = "./vendor/bin/phpcs",
       debounce = 100,
-      args = {  "--report=emacs", "-s", "-" },
+      args = { "--report=emacs", "-s", "-" },
       offsetLine = 0,
       offsetColumn = 0,
       formatLines = 1,
@@ -142,6 +142,19 @@ local function setup_servers()
                   environment = {
                      phpVersion = "7.4.3",
                   },
+               },
+            },
+         }
+      elseif lang == "json" then
+         lspconfig[lang].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
+            settings = {
+               json = {
+                  schemas = require "custom.json-schemas",
                },
             },
          }

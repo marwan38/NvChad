@@ -14,6 +14,10 @@ opt.lazyredraw = true
 opt.equalalways = false
 opt.scrolloff = 10
 
+cmd [[
+  autocmd VimEnter * if exists(':Dotenv') | exe 'Dotenv! ~/.config/nvim/.env' | endif
+]]
+
 -- go to last loc when opening a buffer
 cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
@@ -21,12 +25,6 @@ cmd [[
 
 -- Highlight on yank
 cmd "au TextYankPost * lua vim.highlight.on_yank {}"
-
--- show cursor line only in active window
-cmd [[
-  autocmd InsertLeave,WinEnter * set cursorline
-  autocmd InsertEnter,WinLeave * set nocursorline
-]]
 
 hooks.override("lsp", "publish_diagnostics", function(current)
    current.virtual_text = false
@@ -59,10 +57,6 @@ hooks.add("install_plugins", function(use)
    }
    use {
       "windwp/nvim-spectre",
-      opt = true,
-      module = "spectre",
-      wants = { "plenary.nvim", "popup.nvim" },
-      requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
       config = function()
          require "plugins.configs.spectre"
       end,
@@ -91,6 +85,13 @@ hooks.add("install_plugins", function(use)
 
    -- text objects
    use "wellle/targets.vim" -- many useful additional text objects
+   use {
+      "phaazon/hop.nvim",
+      config = function()
+         -- you can configure Hop the way you like here; see :h hop-config
+         require "plugins.configs.hop".config()
+      end,
+   }
 
    -- registers
    -- use_with_config("svermeulen/vim-subversive", "subversive") -- adds substitute operator
