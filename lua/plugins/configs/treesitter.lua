@@ -9,4 +9,10 @@ ts_config.setup {
       enable = true,
       use_languagetree = true,
    },
+   context_commentstring = {
+      enable = true,
+   },
+   autotag = {
+      enable = true,
+   },
 }

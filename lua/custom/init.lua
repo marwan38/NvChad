@@ -27,7 +27,9 @@ cmd [[
 cmd "au TextYankPost * lua vim.highlight.on_yank {}"
 
 hooks.override("lsp", "publish_diagnostics", function(current)
-   current.virtual_text = false
+   current.virtual_text = {
+      spacing = 3,
+   }
    return current
 end)
 
@@ -89,7 +91,7 @@ hooks.add("install_plugins", function(use)
       "phaazon/hop.nvim",
       config = function()
          -- you can configure Hop the way you like here; see :h hop-config
-         require "plugins.configs.hop".config()
+         require("plugins.configs.hop").config()
       end,
    }
 
@@ -98,9 +100,9 @@ hooks.add("install_plugins", function(use)
    -- use_with_config("svermeulen/vim-cutlass", "cutlass") -- separates cut and delete operations
    -- use_with_config("svermeulen/vim-yoink", "yoink") -- improves paste
    -- shows register contents intelligently
-   -- use {
-   --    "tversteeg/registers.nvim",
-   -- }
+   use {
+      "tversteeg/registers.nvim",
+   }
 
    -- lsp
    -- use_with_config("RRethy/vim-illuminate", "illuminate") -- highlights and allows moving between variable references
@@ -110,7 +112,12 @@ hooks.add("install_plugins", function(use)
       "RRethy/nvim-treesitter-textsubjects", -- adds smart text objects
       ft = { "lua", "typescript", "typescriptreact" },
    }
-   use { "JoosepAlviste/nvim-ts-context-commentstring", ft = { "typescript", "typescriptreact" } }
+   use {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+   }
+   use {
+      "windwp/nvim-ts-autotag",
+   }
 
    -- development
    use_with_config("vuki656/package-info.nvim", "package-info") -- show versions in package.json
