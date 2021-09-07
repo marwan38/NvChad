@@ -6,7 +6,7 @@ local dap = require "dap"
 -- local dap_install = require "dap-install"
 
 local home_programs = vim.fn.getenv "HOME" .. "/programs"
-dap.set_log_level "TRACE"
+
 dap.adapters.php = {
    type = "executable",
    command = "node",
