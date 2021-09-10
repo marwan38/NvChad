@@ -43,6 +43,8 @@ hooks.add("setup_mappings", function(map)
    map("n", "<A-k>", ":resize +7<CR>", opt)
    map("n", "<A-l>", ":vertical resize -7<CR>", opt)
    map("n", "<A-h>", ":vertical resize +7<CR>", opt)
+   -- map("v", "<A-j>", "<Esc>:m .+1<CR>==gi")
+   -- map("v", "<A-k>", "<Esc>:m .-2<CR>==gi")
 end)
 
 hooks.add("install_plugins", function(use)
@@ -110,13 +112,15 @@ hooks.add("install_plugins", function(use)
    -- treesitter
    use {
       "RRethy/nvim-treesitter-textsubjects", -- adds smart text objects
-      ft = { "lua", "typescript", "typescriptreact" },
+      requires = {"nvim-treesitter"}
    }
    use {
       "JoosepAlviste/nvim-ts-context-commentstring",
+      requires = {"nvim-treesitter"}
    }
    use {
       "windwp/nvim-ts-autotag",
+      requires = {"nvim-treesitter"}
    }
 
    -- development

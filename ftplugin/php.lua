@@ -1,19 +1,18 @@
 local opt = vim.opt
 
-opt.shiftwidth = 4;
+opt.shiftwidth = 4
 
 local dap = require "dap"
--- local dap_install = require "dap-install"
+local dap_install = require "dap-install"
 
-local home_programs = vim.fn.getenv "HOME" .. "/programs"
+-- local home_programs = vim.fn.getenv "HOME" .. "/programs"
 
-dap.adapters.php = {
-   type = "executable",
-   command = "node",
-   args = { home_programs .. "/vscode-php-debug/out/phpDebug.js" },
-}
-
-dap.configurations.php = {
+-- dap.adapters.php = {
+--    type = "executable",
+--    command = "node",
+--    args = { home_programs .. "/vscode-php-debug/out/phpDebug.js" },
+-- }
+dap_install.config("php_dbg", {
    {
       name = "Listen for XDebug",
       type = "php",
@@ -37,4 +36,4 @@ dap.configurations.php = {
       cwd = "${fileDirname}",
       port = 9000,
    },
-}
+})

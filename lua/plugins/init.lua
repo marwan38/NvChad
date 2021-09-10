@@ -83,7 +83,7 @@ return packer.startup(function(use)
    use {
       "nvim-treesitter/nvim-treesitter",
       run = ':TSUpdate',
-      branch = "0.5-compat",
+      -- branch = "0.5-compat",
       event = "BufRead",
       config = function()
          require "plugins.configs.treesitter"
